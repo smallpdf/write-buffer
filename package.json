@@ -1,0 +1,14 @@
+{
+  "name": "write-buffer",
+  "version": "0.0.1",
+  "description": "Increase stream throughput by buffering small writes",
+  "main": "write-buffer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Manuel Stofer",
+  "license": "ISC",
+  "dependencies": {
+    "through": "^2.3.7"
+  }
+}
