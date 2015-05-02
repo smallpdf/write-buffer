@@ -18,6 +18,10 @@ createStream(function (output) {
       break;
 
     case 'cork':
+      if (!output.cork) {
+        console.error('not supported');
+        process.exit();
+      }
       s = writebuffer.cork(output, buffersize);
       break;
 
@@ -29,7 +33,7 @@ createStream(function (output) {
 
   var accesslog = '127.0.0.1 - - [24/Dec/2015:20:01:30 -0100] "GET /great-things HTTP/1.1" 200 3395\n';
   var data = new Buffer(accesslog, 'utf-8');
-  for(var i = 0; i < 1000000; i++) {
+  for(var i = 0; i < 100000; i++) {
     s.write(data);
   }
   s.end();  
@@ -50,9 +54,9 @@ function createStream(callback) {
     });
     socket.on('data', function () {});
     // socket.pipe(process.stdout);
-  }).listen(3000);
+  }).listen(4000);
 
-  var socket = net.connect({port: 3000});
+  var socket = net.connect({port: 4000});
   socket.on('connect', function () {
     callback(socket);
   });  
